@@ -1,3 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Chanchal Kumar Salode, final-year PhD student at IIT Delhi working on large-scale optimization for infrastructure and logistics networks." />
+  <title>Chanchal Kumar Salode | Researcher & PhD Student</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --accent: #0b66c3;
+      --muted: #6b7280;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --radius: 14px;
+      --maxw: 1200px;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      font-family: "Inter", system-ui, sans-serif;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    /* --- Header (Hero Section) --- */
+    #hero {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: var(--card);
+      padding: 32px;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+    }
+
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(11, 102, 195, 0.15);
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    #hero h1 {
+      margin: 0;
+      font-size: 1.9rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    #hero p {
+      margin: 12px 0;
+      font-size: 1.02rem;
+      color: #1e293b;
+    }
+
+    .vision {
+      font-weight: 600;
+      color: #0f172a;
+      margin-top: 12px;
+    }
+
+    .social-links {
+      margin-top: 14px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-right: 8px;
+      padding: 6px 12px;
+      border: 1px solid rgba(11,102,195,0.15);
+      border-radius: 8px;
+      font-weight: 600;
+      color: var(--accent);
+      background: #f0f7ff;
+      transition: 0.2s;
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* --- Sections --- */
+    section {
+      background: var(--card);
+      margin-top: 28px;
+      padding: 24px 28px;
+      border-radius: var(--radius);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.04);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: #0f172a;
+      border-bottom: 2px solid rgba(11,102,195,0.15);
+      padding-bottom: 6px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    aside {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.04);
+    }
+
+    @media (max-width: 960px) {
+      #hero { flex-direction: column; align-items: flex-start; }
+      .two-col { grid-template-columns: 1fr; }
+      .profile-pic { width: 120px; height: 120px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- HERO -->
+    <header id="hero">
+      <img src="images/LinkedinPic.jpeg" alt="Chanchal Kumar Salode" class="profile-pic" />
+      <div class="hero-text">
+        <h1>Chanchal Kumar Salode</h1>
+        <p>
+          I’m a final-year PhD student at
+          <a href="https://home.iitd.ac.in/" target="_blank" rel="noopener">Indian Institute of Technology Delhi (IIT Delhi, India)</a>,
+          advised by
+          <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prof. Prasanna Ramamoorthy</a>.
+          My research lies at the intersection of operations research, optimization, and artificial intelligence.
+          I specialize in developing large-scale mathematical models (Mixed-Integer Linear/Nonlinear Programming, MILP/MINLP)
+          and AI-driven optimization algorithms for complex infrastructure and logistics systems.
+          My current focus is on scalable decision-intelligence frameworks that integrate machine learning with optimization
+          to support sustainable planning in transportation, logistics, and infrastructure networks.
+        </p>
+        <p>
+          Before starting my PhD, I worked as a Research and Academic Associate at
+          <a href="https://iimidr.ac.in/" target="_blank" rel="noopener">Indian Institute of Management Indore (IIM Indore, India)</a>,
+          under the supervision of
+          <a href="https://iimidr.ac.in/faculty/full-time-faculty/saurabh-chandra/" target="_blank" rel="noopener">Prof. Saurabh Chandra</a>.
+        </p>
+        <p class="vision">
+          My long-term research vision is to build AI-driven decision-optimization systems that enable sustainable and intelligent infrastructure planning at a global scale.
+        </p>
+
+        <nav class="social-links">
+          <!-- ADDED: CV link. Delete this line if you do not want it. It expects
+               the file at files/Chanchal_Salode_CV.pdf in your repo. -->
+          <a href="files/Chanchal_Salode_CV.pdf">Curriculum Vitae</a>
+          <a href="mailto:chsalode@gmail.com">Email</a>
+          <a href="https://scholar.google.com/citations?user=VPc1v1QAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/chanchal-kumar-salode-b39831100" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/ChanchalSalode" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENT SECTIONS -->
+    <section id="updates">
+      <h2>Recent Updates</h2>
+      <ul>
+        <li><strong>August 2026:</strong> Received the <strong>Third Prize</strong> in the <strong>18th AIMMS-MOPTA Optimization Modeling Competition</strong>; presented our work at the <strong>MOPTA 2026 Conference</strong>, Lehigh University, Bethlehem, PA, USA.</li>
+        <li><strong>October 2025:</strong> Served as <strong>Session Chair</strong> for the <em>Network Performance, Disruption, and Adaptation</em> session at the <strong>2025 INFORMS Annual Meeting</strong>, Atlanta, GA, USA.</li>
+        <li><strong>October 2025:</strong> Presented our work at the <strong>2025 INFORMS Annual Meeting</strong>, Atlanta, GA, USA.</li>
+        <li><strong>April 2025:</strong> Attended the <strong>Advances in Data-Driven Optimization Workshop</strong>, IIM Ahmedabad, India.</li>
+        <li><strong>March 2025:</strong> Delivered a talk at the <strong>Large Scale Optimization Conference 2025</strong>, IIT Roorkee, India.</li>
+        <li><strong>January 2025:</strong> Attended the <strong>11th Winter School on Network Optimization at Estoril, Portugal</strong> (endorsed by EURO and APDIO).</li>
+        <li><strong>December 2024:</strong> Conducted an <strong>Advanced Workshop on Optimization</strong> at the Department of Management Studies, IIT Delhi, India.</li>
+        <li><strong>November 2024:</strong> Attended the <strong>Mixed Integer Programming 2024 (MIP2024)</strong> Workshop at IIT Bombay, India.</li>
+        <li><strong>October 2024:</strong> Presented our work at the <strong>2024 INFORMS Annual Meeting in Seattle, USA</strong>.</li>
+        <li><strong>September 2024:</strong> Our team was a <strong>finalist</strong> in the <strong>2024 INFORMS RAS Problem Solving Competition</strong>.</li>
+        <li><strong>August 2024:</strong> Received the <strong>INFORMS RAS Participation Scholarship</strong>.</li>
+        <li><strong>October 2023:</strong> Our team received the <strong>Second Prize</strong> in the <strong>2023 INFORMS RAS Problem Solving Competition</strong> at the <strong>2023 INFORMS Annual Meeting</strong> in <strong>Phoenix, USA</strong>.</li>
+      </ul>
+    </section>
     <div class="two-col">
       <main>
         <section id="research">
