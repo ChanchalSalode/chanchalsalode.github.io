@@ -1,207 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Chanchal Kumar Salode, final-year PhD student at IIT Delhi working on large-scale optimization for infrastructure and logistics networks." />
-  <title>Chanchal Kumar Salode | Researcher & PhD Student</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <div class="two-col">
+      <main>
+        <section id="research">
+          <h2>Research Interests</h2>
+          <p>
+            I am interested in combinatorial optimization, large-scale optimization, and energy systems. My current research focuses on developing exact algorithms and scalable optimization methods for network design, critical infrastructure planning, and multilevel optimization, with an emphasis on decomposition techniques and large-scale mixed-integer optimization.
+          </p>
 
-  <style>
-    :root {
-      --accent: #0b66c3;
-      --muted: #6b7280;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --radius: 14px;
-      --maxw: 1200px;
-    }
+          <ul style="list-style-type: none; padding-left: 0; margin-top: 12px; line-height: 1.7;">
+            <li>• Machine Learning and Artificial Intelligence for Optimization</li>
+            <li>• Integer / Mixed-Integer Programming</li>
+            <li>• Combinatorial Optimization</li>
+            <li>• Multi-level Optimization</li>
+            <li>• Large-Scale Optimization (Exact Methods and Heuristics)</li>
+            <li>• Multi-Objective Optimization</li>
+            <li>• Optimization under Data Uncertainty (Stochastic and Robust)</li>
+          </ul>
+        </section>
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: var(--bg);
-      font-family: "Inter", system-ui, sans-serif;
-      color: #111827;
-      line-height: 1.6;
-    }
+        <section id="projects">
+          <h2>Research Projects</h2>
+          <h3>Intermodal Hub Location Problem, Sponsored by CRIS, Ministry of Railways, Government of India</h3>
+          <p><strong>March 2025 to March 2026</strong><br/>
+          <em><a href="https://cris.org.in/" target="_blank" rel="noopener">Centre for Railway Information Systems (CRIS), India</a></em></p>
+          <ul>
+            <li>Built large-scale MILP models and solution methods for intermodal hub location and freight routing across the Indian Railways network, under capacity, budget and service-level constraints.</li>
+            <li>Applied MiniBatch K-Means clustering to aggregate origin-destination demand data at a scale of millions of points, producing representative clusters that cut memory use and solve time while preserving the structure of the demand.</li>
+            <li>Developed Benders decomposition and acceleration strategies that brought country-scale instances inside practical time limits.</li>
+            <li>The project aims to enhance efficiency, capacity utilization, and multimodal integration within the Indian Railways network through intelligent infrastructure planning.</li>
+          </ul>
+        </section>
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+        <section id="manuscripts">
+          <h2>Manuscripts &amp; Academic Contributions</h2>
 
-    .container {
-      max-width: var(--maxw);
-      margin: 40px auto;
-      padding: 0 24px;
-    }
+          <h3>Published</h3>
+          <ul>
+            <li>
+              <strong>Chanchal Kumar Salode</strong> and
+              <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>,
+              “Train timetabling with rolling stock assignment, short-turning and skip-stop strategy for a bidirectional metro line”,
+              <em>Transportation Research Part B: Methodological</em>, Volume 211, September 2026, 103529
+              (<strong>ABDC A*, ABS 4, SCIE, Q1</strong>).
+              <a href="https://doi.org/10.1016/j.trb.2026.103529" target="_blank" rel="noopener">[DOI]</a>
+            </li>
+          </ul>
 
-    /* --- Header (Hero Section) --- */
-    #hero {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      background: var(--card);
-      padding: 32px;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-    }
+          <h3>Manuscripts Under Preparation</h3>
+          <ul>
+            <li><strong>Chanchal Kumar Salode</strong>, <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>, and <a href="https://www.concordia.ca/jmsb/faculty/navneet-vidyarthi.html" target="_blank" rel="noopener">Navneet Vidyarthi</a>, “Topological hub location problem: Model formulations and solution approaches”, Target Journal: <em>Operations Research</em></li>
+            <li>Satadru Banerjee, <strong>Chanchal Kumar Salode</strong>, and <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>, “Critical Hub Arc Protection in Hub-and-Spoke Networks: Model Formulations and Solution Approaches”, Target Journal: <em>European Journal of Operational Research (EJOR)</em>.</li>
+            <li><strong>Chanchal Kumar Salode</strong> and <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>, “An exact Benders decomposition for time-optimal marshalling in flat rail yards with horizon-invariance”, Target Journal: <em>INFORMS Journal on Computing</em></li>
+          </ul>
 
-    .profile-pic {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(11, 102, 195, 0.15);
-    }
+          <!-- ADDED: the Industrial Engineering Journal paper, kept under its own
+               heading rather than beside the TRB article. Delete this block if
+               you would rather leave it off. -->
+          <h3>Other Publications</h3>
+          <ul>
+            <li>Saikat Mukherjee, <strong>Chanchal Kumar Salode</strong>, and <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>, “New Sets of Closest Assignment Constraints for r-Hub Median Interdiction Problems”, <em>Industrial Engineering Journal</em>, Volume XIX, Issue 4, April 2026.</li>
+          </ul>
 
-    .hero-text {
-      flex: 1;
-    }
+          <!-- Conference Presentations -->
+          <h3>Conference Presentations</h3>
+          <ul>
+            <li>
+              <strong>Session Chair</strong>, “Network Performance, Disruption, and Adaptation”,
+              Contributed Session, <em>2025 INFORMS Annual Meeting</em>, Atlanta, Georgia, USA
+            </li>
+            <li>
+              <strong>Chanchal Kumar Salode</strong>, Satadru Banerjee and Prasanna Ramamoorthy,
+              “Interfor Dedicated Truck Routing Optimization Using KNN Reduction and STAR Matheuristic”,
+              <em>MOPTA 2026</em>, Award Session, <strong>Finalist Presentation</strong>,
+              18th AIMMS-MOPTA Optimization Modeling Competition, Lehigh University, Bethlehem, PA, USA
+            </li>
+            <li>
+              <strong>Chanchal Kumar Salode</strong> and Prasanna Ramamoorthy,
+              “Single Allocation Hub Line Location Problems: Model Formulations and Exact Solution Methods”,
+              <em>2025 INFORMS Annual Meeting</em>, Contributed Session, Atlanta, Georgia, USA
+            </li>
+            <li>
+              <strong>Chanchal Kumar Salode</strong> and Prasanna Ramamoorthy,
+              “Train timetabling with rolling stock assignment, short-turning and skip-stop strategy for a bidirectional metro line”,
+              <em>Large Scale Optimization Conference 2025</em>, IIT Roorkee, India
+            </li>
+            <li>
+              <strong>Chanchal Kumar Salode</strong> and Prasanna Ramamoorthy,
+              “Junction hub location problem”,
+              <em>2024 INFORMS Annual Meeting</em>, Flash Session, Seattle, WA, USA
+            </li>
+            <li>
+              <strong>Chanchal Kumar Salode</strong> and Prasanna Ramamoorthy,
+              “Optimizing train marshalling with shunter in a flat rail yard”,
+              <em>2024 INFORMS Annual Meeting</em>, Award Session, <strong>Finalist Presentation</strong>,
+              RAS Problem Solving Competition, Seattle, WA, USA
+            </li>
+            <li>
+              <strong>Chanchal Kumar Salode</strong> and Prasanna Ramamoorthy,
+              “Train timetabling with rolling stock assignment and short-turning strategy for a bidirectional metro line”,
+              <em>2023 INFORMS Annual Meeting</em>, Award Session, <strong>Finalist Presentation</strong>,
+              RAS Problem Solving Competition, Phoenix, AZ, USA
+            </li>
+          </ul>
 
-    #hero h1 {
-      margin: 0;
-      font-size: 1.9rem;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
+          <!-- Editorial and Review Experience -->
+          <h3>Editorial &amp; Review Experience</h3>
+          <ul>
+            <li>
+              Reviewed manuscripts for <em>Transportation Research Part B: Methodological</em> (ABDC: A*)
+            </li>
+          </ul>
+        </section>
 
-    #hero p {
-      margin: 12px 0;
-      font-size: 1.02rem;
-      color: #1e293b;
-    }
+        <!-- Teaching & Experience Section -->
+        <section id="teaching-experience">
+          <h2>Teaching &amp; Experience</h2>
+          <!-- Teaching Roles -->
+          <div class="teaching">
+            <h3>Teaching Assistant</h3>
+            <ul>
+              <li>Project Management, IIT Delhi, India (2025)</li>
+              <li>Quantitative Methods in Management, IIT Delhi, India (2024)</li>
+              <li>Applied Operations Research, IIT Delhi, India (2023)</li>
+              <li>Managing Operations, IIT Delhi, India (2022)</li>
+              <li>Introduction to Algorithms, IIM Indore, India (2021)</li>
+            </ul>
+          </div>
 
-    .vision {
-      font-weight: 600;
-      color: #0f172a;
-      margin-top: 12px;
-    }
+          <!-- Research & Industry Experience -->
+          <div class="experience">
+            <h3>Research/Academic Associate</h3>
+            <p>
+              Indian Institute of Management Indore (IIM Indore)<br/>
+              Operations Management &amp; Quantitative Techniques<br/>
+              September 2020 to December 2021<br/>
+              Advisor: Prof. Saurabh Chandra (Professor, IIM Indore)
+            </p>
+          </div>
+        </section>
+      </main>
 
-    .social-links {
-      margin-top: 14px;
-    }
+      <aside>
+        <h2>Snapshot</h2>
+        <p><strong>Position:</strong> PhD Student, IIT Delhi<br/>
+        <strong>Advisor:</strong> Prof. Prasanna Ramamoorthy<br/>
+        <strong>Area:</strong> Optimization &amp; AI<br/>
+        <strong>Project:</strong> CRIS: Intermodal Hub Location</p>
 
-    .social-links a {
-      display: inline-block;
-      margin-right: 8px;
-      padding: 6px 12px;
-      border: 1px solid rgba(11,102,195,0.15);
-      border-radius: 8px;
-      font-weight: 600;
-      color: var(--accent);
-      background: #f0f7ff;
-      transition: 0.2s;
-    }
+        <h3>Highlights</h3>
+        <ul>
+          <li><strong>Third Prize:</strong> 18th AIMMS-MOPTA Optimization Modeling Competition 2026</li>
+          <li><strong>Second Prize:</strong> 2023 INFORMS RAS Problem Solving Competition</li>
+          <li><strong>Finalist:</strong> 2024 INFORMS RAS Problem Solving Competition</li>
+          <li><strong>Presenter:</strong> MOPTA 2026 Conference, Lehigh University, USA</li>
+          <li><strong>Session Chair:</strong> INFORMS Annual Meeting 2025</li>
+          <li><strong>Presenter:</strong> INFORMS Annual Meeting 2025</li>
+          <li><strong>Speaker:</strong> Large Scale Optimization Conference 2025, IIT Roorkee, India</li>
+        </ul>
 
-    .social-links a:hover {
-      background: var(--accent);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    /* --- Sections --- */
-    section {
-      background: var(--card);
-      margin-top: 28px;
-      padding: 24px 28px;
-      border-radius: var(--radius);
-      box-shadow: 0 6px 22px rgba(0,0,0,0.04);
-    }
-
-    h2 {
-      margin-top: 0;
-      font-size: 1.25rem;
-      color: #0f172a;
-      border-bottom: 2px solid rgba(11,102,195,0.15);
-      padding-bottom: 6px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 6px;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 24px;
-      margin-top: 28px;
-    }
-
-    aside {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: 0 6px 22px rgba(0,0,0,0.04);
-    }
-
-    @media (max-width: 960px) {
-      #hero { flex-direction: column; align-items: flex-start; }
-      .two-col { grid-template-columns: 1fr; }
-      .profile-pic { width: 120px; height: 120px; }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <!-- HERO -->
-    <header id="hero">
-      <img src="images/LinkedinPic.jpeg" alt="Chanchal Kumar Salode" class="profile-pic" />
-      <div class="hero-text">
-        <h1>Chanchal Kumar Salode</h1>
-        <p>
-          I’m a final-year PhD student at
-          <a href="https://home.iitd.ac.in/" target="_blank" rel="noopener">Indian Institute of Technology Delhi (IIT Delhi, India)</a>,
-          advised by
-          <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prof. Prasanna Ramamoorthy</a>.
-          My research lies at the intersection of operations research, optimization, and artificial intelligence.
-          I specialize in developing large-scale mathematical models (Mixed-Integer Linear/Nonlinear Programming, MILP/MINLP)
-          and AI-driven optimization algorithms for complex infrastructure and logistics systems.
-          My current focus is on scalable decision-intelligence frameworks that integrate machine learning with optimization
-          to support sustainable planning in transportation, logistics, and infrastructure networks.
-        </p>
-        <p>
-          Before starting my PhD, I worked as a Research and Academic Associate at
-          <a href="https://iimidr.ac.in/" target="_blank" rel="noopener">Indian Institute of Management Indore (IIM Indore, India)</a>,
-          under the supervision of
-          <a href="https://iimidr.ac.in/faculty/full-time-faculty/saurabh-chandra/" target="_blank" rel="noopener">Prof. Saurabh Chandra</a>.
-        </p>
-        <p class="vision">
-          My long-term research vision is to build AI-driven decision-optimization systems that enable sustainable and intelligent infrastructure planning at a global scale.
-        </p>
-
-        <nav class="social-links">
-          <!-- ADDED: CV link. Delete this line if you do not want it. It expects
-               the file at files/Chanchal_Salode_CV.pdf in your repo. -->
-          <a href="files/Chanchal_Salode_CV.pdf">Curriculum Vitae</a>
-          <a href="mailto:chsalode@gmail.com">Email</a>
-          <a href="https://scholar.google.com/citations?user=VPc1v1QAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
-          <a href="https://www.linkedin.com/in/chanchal-kumar-salode-b39831100" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/ChanchalSalode" target="_blank" rel="noopener">GitHub</a>
-        </nav>
-      </div>
-    </header>
-
-    <!-- CONTENT SECTIONS -->
-    <section id="updates">
-      <h2>Recent Updates</h2>
-      <ul>
-        <li><strong>August 2026:</strong> Received the <strong>Third Prize</strong> in the <strong>18th AIMMS-MOPTA Optimization Modeling Competition</strong>; presented our work at the <strong>MOPTA 2026 Conference</strong>, Lehigh University, Bethlehem, PA, USA.</li>
-        <li><strong>October 2025:</strong> Served as <strong>Session Chair</strong> for the <em>Network Performance, Disruption, and Adaptation</em> session at the <strong>2025 INFORMS Annual Meeting</strong>, Atlanta, GA, USA.</li>
-        <li><strong>October 2025:</strong> Presented our work at the <strong>2025 INFORMS Annual Meeting</strong>, Atlanta, GA, USA.</li>
-        <li><strong>April 2025:</strong> Attended the <strong>Advances in Data-Driven Optimization Workshop</strong>, IIM Ahmedabad, India.</li>
-        <li><strong>March 2025:</strong> Delivered a talk at the <strong>Large Scale Optimization Conference 2025</strong>, IIT Roorkee, India.</li>
-        <li><strong>January 2025:</strong> Attended the <strong>11th Winter School on Network Optimization at Estoril, Portugal</strong> (endorsed by EURO and APDIO).</li>
-        <li><strong>December 2024:</strong> Conducted an <strong>Advanced Workshop on Optimization</strong> at the Department of Management Studies, IIT Delhi, India.</li>
-        <li><strong>November 2024:</strong> Attended the <strong>Mixed Integer Programming 2024 (MIP2024)</strong> Workshop at IIT Bombay, India.</li>
-        <li><strong>October 2024:</strong> Presented our work at the <strong>2024 INFORMS Annual Meeting in Seattle, USA</strong>.</li>
-        <li><strong>September 2024:</strong> Our team was a <strong>finalist</strong> in the <strong>2024 INFORMS RAS Problem Solving Competition</strong>.</li>
-        <li><strong>August 2024:</strong> Received the <strong>INFORMS RAS Participation Scholarship</strong>.</li>
-        <li><strong>October 2023:</strong> Our team received the <strong>Second Prize</strong> in the <strong>2023 INFORMS RAS Problem Solving Competition</strong> at the <strong>2023 INFORMS Annual Meeting</strong> in <strong>Phoenix, USA</strong>.</li>
-      </ul>
-    </section>
+        <h3>Contact</h3>
+        <p><a href="mailto:chsalode@gmail.com">chsalode@gmail.com</a><br/>
+        <a href="mailto:smz218543@dms.iitd.ac.in">smz218543@dms.iitd.ac.in</a></p>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>
