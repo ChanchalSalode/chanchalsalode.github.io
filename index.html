@@ -8,527 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
-<style>
-/* ---------------------------------------------------------------
-   Tokens. The light palette is defined in full on bare :root, then
-   only redefined in the two dark blocks. Nothing gets its sole
-   definition inside a media query, or the page renders one theme's
-   text on the other theme's ground.
-   --------------------------------------------------------------- */
-:root {
-  color-scheme: light;
-
-  --paper:        #fbfaf7;   /* warm off-white, the page ground        */
-  --surface:      #ffffff;   /* raised blocks, used sparingly          */
-  --surface-alt:  #f3f1ea;   /* quiet fill for the awards grid         */
-  --ink:          #12202b;   /* deep blue-black body text              */
-  --ink-strong:   #08131b;   /* headings                               */
-  --muted:        #5a6a70;   /* grey biased toward the teal accent     */
-  --rule:         #e3ded3;   /* warm hairline                          */
-  --accent:       #0f5c63;   /* deep teal                              */
-  --accent-ink:   #0b464c;   /* accent text on paper, higher contrast  */
-  --accent-soft:  #e4efed;   /* accent wash                            */
-  --on-accent:    #ffffff;   /* text sitting on a filled accent block  */
-
-  --measure: 68ch;
-  --gutter: 24px;
-
-  --step--1: 0.8125rem;
-  --step-0:  1rem;
-  --step-1:  1.1875rem;
-  --step-2:  1.4375rem;
-  --step-3:  1.875rem;
-  --step-4:  2.75rem;
-
-  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
-  --sans:  "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    color-scheme: dark;
-    --paper:       #0f1518;
-    --surface:     #161e22;
-    --surface-alt: #18232a;
-    --ink:         #e4e6e4;
-    --ink-strong:  #f4f5f3;
-    --muted:       #93a3a7;
-    --rule:        #26333a;
-    --accent:      #4fb3b0;
-    --accent-ink:  #6fc9c5;
-    --accent-soft: #14282b;
-    --on-accent:   #08181a;
-  }
-}
-
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --paper:       #0f1518;
-  --surface:     #161e22;
-  --surface-alt: #18232a;
-  --ink:         #e4e6e4;
-  --ink-strong:  #f4f5f3;
-  --muted:       #93a3a7;
-  --rule:        #26333a;
-  --accent:      #4fb3b0;
-  --accent-ink:  #6fc9c5;
-  --accent-soft: #14282b;
-  --on-accent:   #08181a;
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: var(--step-0);
-  line-height: 1.62;
-  -webkit-font-smoothing: antialiased;
-}
-
-img { max-width: 100%; }
-
-a {
-  color: var(--accent-ink);
-  text-decoration-color: var(--rule); /* fallback before color-mix */
-  text-decoration-color: color-mix(in srgb, var(--accent-ink) 35%, transparent);
-  text-underline-offset: 2px;
-}
-a:hover { text-decoration-color: currentColor; }
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
-
-/* ----- shell ----- */
-.wrap {
-  max-width: 940px;
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
-/* ---------------------------------------------------------------
-   Masthead. The old page put a shadowed rounded card around every
-   single block, which flattens the hierarchy: if everything is a
-   raised object, nothing reads as more important than anything
-   else. Here the masthead is set on the page ground and separated
-   by a rule, and the card treatment is saved for the awards grid.
-   --------------------------------------------------------------- */
-.masthead {
-  padding-block: clamp(32px, 6vw, 60px) 28px;
-  border-bottom: 1px solid var(--rule);
-}
-
-.identity {
-  display: grid;
-  grid-template-columns: 112px 1fr;
-  gap: 26px;
-  align-items: start;
-}
-
-.portrait {
-  width: 112px;
-  height: 112px;
-  border-radius: 3px;
-  object-fit: cover;
-  background: var(--surface-alt);
-  filter: saturate(0.9);
-}
-
-.monogram {
-  width: 112px;
-  height: 112px;
-  border-radius: 3px;
-  display: none;
-  place-items: center;
-  background: var(--accent-soft);
-  color: var(--accent-ink);
-  font-family: var(--serif);
-  font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-h1 {
-  margin: 0;
-  font-family: var(--serif);
-  font-size: var(--step-4);
-  font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.015em;
-  color: var(--ink-strong);
-  text-wrap: balance;
-}
-
-.role {
-  margin: 6px 0 0;
-  font-family: var(--mono);
-  font-size: var(--step--1);
-  letter-spacing: 0.02em;
-  color: var(--muted);
-}
-
-.lede {
-  max-width: var(--measure);
-  margin: 18px 0 0;
-  font-size: var(--step-1);
-  line-height: 1.58;
-}
-
-.lede + .lede {
-  margin-top: 12px;
-  font-size: var(--step-0);
-  color: var(--muted);
-}
-
-/* ----- fact strip ----- */
-/* Four items in two columns, so the grid always fills. auto-fit was giving
-   three across with the fourth stranded alone on its own row. */
-.facts {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2px 34px;
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid var(--rule);
-  list-style: none;
-  padding-inline-start: 0;
-}
-.facts div { padding-block: 5px; }
-.facts dt {
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-}
-.facts dd {
-  margin: 1px 0 0;
-  font-size: var(--step--1);
-  line-height: 1.45;
-}
-
-/* ----- link row ----- */
-.links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 20px;
-}
-.links a {
-  display: inline-block;
-  padding: 5px 12px;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  font-size: var(--step--1);
-  font-weight: 600;
-  color: var(--ink);
-  text-decoration: none;
-  background: var(--surface);
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
-}
-.links a:hover {
-  border-color: var(--accent);
-  color: var(--accent-ink);
-  background: var(--accent-soft);
-}
-/* The filled button takes its foreground from a token rather than from a
-   literal, so it stays legible in both themes without a separate rule. */
-.links a.primary {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--on-accent);
-}
-.links a.primary:hover { filter: brightness(1.08); }
-
-/* ----- sticky section nav ----- */
-.sectionnav {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 10;
-  background: var(--paper); /* solid fallback where color-mix is unsupported */
-  background: color-mix(in srgb, var(--paper) 92%, transparent);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--rule);
-}
-.sectionnav ul {
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.sectionnav ul::-webkit-scrollbar { display: none; }
-.sectionnav a {
-  display: block;
-  padding: 11px 0;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  text-decoration: none;
-  white-space: nowrap;
-  border-bottom: 2px solid transparent;
-}
-.sectionnav a:hover { color: var(--accent-ink); border-bottom-color: var(--accent); }
-
-/* ----- sections ----- */
-section {
-  padding-block: 40px;
-  border-bottom: 1px solid var(--rule);
-  scroll-margin-top: 60px;
-}
-section:last-of-type { border-bottom: 0; }
-
-h2 {
-  margin: 0 0 20px;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.13em;
-  color: var(--accent-ink);
-}
-
-h3 {
-  margin: 26px 0 10px;
-  font-family: var(--serif);
-  font-size: var(--step-2);
-  font-weight: 600;
-  line-height: 1.25;
-  color: var(--ink-strong);
-  text-wrap: balance;
-}
-h3:first-of-type { margin-top: 0; }
-
-h4 {
-  margin: 22px 0 8px;
-  font-family: var(--sans);
-  font-size: var(--step--1);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-}
-
-p { max-width: var(--measure); margin: 0 0 14px; }
-p:last-child { margin-bottom: 0; }
-
-/* ----- reference lists (publications, talks) ----- */
-.refs {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.refs > li {
-  max-width: var(--measure);
-  padding-left: 16px;
-  border-left: 2px solid var(--rule);
-  font-size: var(--step-0);
-  line-height: 1.55;
-}
-.refs > li.featured { border-left-color: var(--accent); }
-.refs .me { font-weight: 700; color: var(--ink-strong); }
-.refs cite { font-style: italic; }
-.venue-tags {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-left: 4px;
-  vertical-align: baseline;
-}
-.tag {
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.03em;
-  padding: 1px 6px;
-  border-radius: 3px;
-  background: var(--accent-soft);
-  color: var(--accent-ink);
-  white-space: nowrap;
-}
-.target {
-  display: block;
-  margin-top: 3px;
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.03em;
-  color: var(--muted);
-}
-
-/* ----- interests ----- */
-.interests {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin: 18px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.interests li {
-  padding: 4px 11px;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  font-size: var(--step--1);
-  background: var(--surface);
-}
-
-/* ---------------------------------------------------------------
-   Awards. This is the one place the page uses a filled card, so
-   the four results read as a distinct object rather than as more
-   body copy. The placing is set in mono so the four align.
-   --------------------------------------------------------------- */
-.awards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* four items, two rows, no orphan */
-  gap: 1px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  overflow: hidden;
-}
-.awards li {
-  background: var(--surface-alt);
-  padding: 16px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.placing {
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent-ink);
-}
-.awards .what { font-weight: 600; line-height: 1.35; color: var(--ink-strong); }
-.awards .where { font-size: var(--step--1); color: var(--muted); }
-
-/* ----- news ----- */
-.news {
-  columns: 2;
-  column-gap: 40px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.news li {
-  break-inside: avoid;
-  margin-bottom: 14px;
-  padding-left: 14px;
-  border-left: 2px solid var(--rule);
-  font-size: var(--step--1);
-  line-height: 1.5;
-}
-.news .when {
-  display: block;
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.03em;
-  color: var(--muted);
-}
-
-/* ----- project ----- */
-.project-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  margin: 0 0 12px;
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.03em;
-  color: var(--muted);
-}
-.bullets {
-  max-width: var(--measure);
-  margin: 0;
-  padding-left: 18px;
-}
-.bullets li { margin-bottom: 7px; }
-
-/* ----- teaching ----- */
-.courses {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  max-width: var(--measure);
-}
-.courses li {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--rule);
-}
-.courses li:last-child { border-bottom: 0; }
-.courses .yr {
-  font-family: var(--mono);
-  font-size: var(--step--1);
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-  flex: none;
-}
-
-/* ----- footer ----- */
-footer {
-  padding-block: 32px 44px;
-  font-size: var(--step--1);
-  color: var(--muted);
-}
-footer p { max-width: var(--measure); }
-.mailto { font-family: var(--mono); }
-
-/* ----- theme toggle ----- */
-.themetoggle {
-  position: fixed;
-  right: 16px;
-  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-  z-index: 20;
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 15px;
-  line-height: 1;
-}
-.themetoggle:hover { color: var(--accent-ink); border-color: var(--accent); }
-
-@media (max-width: 700px) {
-  .identity { grid-template-columns: 84px 1fr; gap: 18px; }
-  .portrait, .monogram { width: 84px; height: 84px; }
-  .monogram { font-size: 1.4rem; }
-  .news { columns: 1; }
-  .facts { grid-template-columns: 1fr; }
-  .awards { grid-template-columns: 1fr; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-</style>
+<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -539,4 +19,416 @@ footer p { max-width: var(--measure); }
       <img src="images/LinkedinPic.jpeg" alt="Chanchal Kumar Salode" class="portrait" id="portrait" />
       <div class="monogram" id="monogram" aria-hidden="true">CKS</div>
       <div>
-        <h1>Chanchal
+        <h1>Chanchal Kumar Salode</h1>
+        <p class="role">PhD Candidate, Operations Research / Department of Management Studies, IIT Delhi</p>
+
+        <p class="lede">
+          I build large-scale optimization models for the design and operation of freight and
+          transportation networks. My doctoral work, advised by
+          <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>
+          at <a href="https://home.iitd.ac.in/" target="_blank" rel="noopener">IIT Delhi</a>,
+          covers hub location, intermodal terminal siting, protection of networks against
+          disruption, and scheduling, solved with exact decomposition methods on national-scale
+          instances. A thread running through it is using machine learning to make otherwise
+          intractable models solvable: clustering to aggregate demand, instance reduction to
+          shrink the search space before the solver ever sees it.
+        </p>
+
+        <p class="lede">
+          Before the PhD I was a Research and Academic Associate at
+          <a href="https://iimidr.ac.in/" target="_blank" rel="noopener">IIM Indore</a>
+          with <a href="https://iimidr.ac.in/faculty/full-time-faculty/saurabh-chandra/" target="_blank" rel="noopener">Saurabh Chandra</a>.
+          I am looking for a postdoctoral position starting in 2027.
+        </p>
+
+        <dl class="facts">
+          <div>
+            <dt>Thesis</dt>
+            <dd>Optimization Models for Strategic and Operational Planning in Rail Transportation Systems</dd>
+          </div>
+          <div>
+            <dt>Submission</dt>
+            <dd>Expected December 2026, defence February 2027</dd>
+          </div>
+          <div>
+            <dt>Methods</dt>
+            <dd>MILP and MINLP, Benders decomposition, branch-and-cut, matheuristics</dd>
+          </div>
+          <div>
+            <dt>Solvers</dt>
+            <dd>CPLEX, Gurobi, FICO Xpress, AMPL</dd>
+          </div>
+        </dl>
+
+        <nav class="links" aria-label="Profiles and contact">
+          <a class="primary" href="files/Chanchal_Salode_CV.pdf">Curriculum Vitae</a>
+          <a href="mailto:chsalode@gmail.com">Email</a>
+          <a href="https://scholar.google.com/citations?user=VPc1v1QAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/chanchal-kumar-salode-b39831100" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/ChanchalSalode" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="sectionnav" aria-label="Sections">
+  <div class="wrap">
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#news">News</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="research">
+    <h2>Research</h2>
+    <p>
+      My work sits in large-scale combinatorial optimization, with network design as the
+      recurring problem class. I develop exact algorithms, mainly Benders decomposition and
+      branch-and-cut strengthened with valid inequalities, for hub location, intermodal terminal
+      siting, critical infrastructure protection, and multilevel problems where an adversary or a
+      disruption acts on the network after it is built.
+    </p>
+    <p>
+      The practical constraint in all of this is scale. Realistic instances carry demand data at a
+      scale of millions of origin-destination pairs, which no exact method handles directly. I use
+      machine learning to reduce that burden without discarding the structure that matters:
+      MiniBatch K-Means to aggregate demand into representative clusters, and nearest-neighbour
+      instance reduction to prune candidate routes ahead of the solver. Applications so far have
+      been in rail and multimodal freight, and the same machinery carries over to supply chain and
+      energy network planning.
+    </p>
+    <ul class="interests">
+      <li>Network design and hub location</li>
+      <li>Integer and mixed-integer programming</li>
+      <li>Decomposition methods</li>
+      <li>Multilevel and interdiction problems</li>
+      <li>Machine learning for optimization</li>
+      <li>Combinatorial optimization</li>
+      <li>Multi-objective optimization</li>
+      <li>Stochastic and robust optimization</li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <h4>Journal article</h4>
+    <ul class="refs">
+      <li class="featured">
+        <span class="me">Chanchal Kumar Salode</span> and
+        <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>,
+        "Train timetabling with rolling stock assignment, short-turning and skip-stop strategy for
+        a bidirectional metro line",
+        Transportation Research Part B: Methodological, Volume 211, September 2026,
+        103529.
+        <span class="venue-tags">
+          <span class="tag">ABDC A*</span>
+          <span class="tag">ABS 4</span>
+          <span class="tag">SCIE Q1</span>
+        </span>
+        <a href="https://doi.org/10.1016/j.trb.2026.103529" target="_blank" rel="noopener">DOI</a>
+      </li>
+    </ul>
+
+    <h4>Manuscripts under preparation</h4>
+    <ul class="refs">
+      <li>
+        <span class="me">Chanchal Kumar Salode</span>,
+        <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>
+        and
+        <a href="https://www.concordia.ca/jmsb/faculty/navneet-vidyarthi.html" target="_blank" rel="noopener">Navneet Vidyarthi</a>,
+        "Topological hub location problem: Model formulations and solution approaches".
+        <span class="target">Target: Operations Research</span>
+      </li>
+      <li>
+        Satadru Banerjee, <span class="me">Chanchal Kumar Salode</span> and
+        <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>,
+        "Critical hub arc protection in hub-and-spoke networks: Model formulations and solution
+        approaches".
+        <span class="target">Target: European Journal of Operational Research</span>
+      </li>
+      <li>
+        <span class="me">Chanchal Kumar Salode</span> and
+        <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>,
+        "An exact Benders decomposition for time-optimal marshalling in flat rail yards with
+        horizon-invariance".
+        <span class="target">Target: INFORMS Journal on Computing</span>
+      </li>
+    </ul>
+
+    <h4>Other publications</h4>
+    <ul class="refs">
+      <li>
+        Saikat Mukherjee, <span class="me">Chanchal Kumar Salode</span> and
+        <a href="https://dms.iitd.ac.in/areawise_faculity/prof-prasanna-r/" target="_blank" rel="noopener">Prasanna Ramamoorthy</a>,
+        "New sets of closest assignment constraints for r-hub median interdiction problems",
+        Industrial Engineering Journal, Volume XIX, Issue 4, April 2026.
+      </li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <h3>Intermodal hub location and network planning for Indian Railways</h3>
+    <p class="project-meta">
+      <span>Sponsored by CRIS, Ministry of Railways, Government of India</span>
+      <span>March 2025 to March 2026</span>
+    </p>
+    <ul class="bullets">
+      <li>
+        Built large-scale MILP models for siting intermodal hubs and routing freight flows over a
+        national infrastructure network, under capacity, budget and service-level constraints.
+      </li>
+      <li>
+        Applied MiniBatch K-Means clustering to aggregate origin-destination demand data at a scale
+        of millions of points, producing representative clusters that cut memory use and solve time
+        while preserving the structure of the demand.
+      </li>
+      <li>
+        Developed Benders decomposition and acceleration strategies that brought country-scale
+        instances inside practical time limits.
+      </li>
+      <li>
+        Worked with the operator's planning and data teams to reconcile model assumptions with
+        field data and operating rules, and to present results in a form usable for investment
+        decisions.
+      </li>
+    </ul>
+  </section>
+
+  <section id="awards">
+    <h2>Awards</h2>
+    <ul class="awards">
+      <li>
+        <span class="placing">Third Prize, 2026</span>
+        <span class="what">18th AIMMS-MOPTA Optimization Modeling Competition</span>
+        <span class="where">Lehigh University, Bethlehem, PA</span>
+      </li>
+      <li>
+        <span class="placing">Second Prize, 2023</span>
+        <span class="what">INFORMS RAS Problem Solving Competition</span>
+        <span class="where">INFORMS Annual Meeting, Phoenix, AZ</span>
+      </li>
+      <li>
+        <span class="placing">Finalist, 2024</span>
+        <span class="what">INFORMS RAS Problem Solving Competition</span>
+        <span class="where">INFORMS Annual Meeting, Seattle, WA</span>
+      </li>
+      <li>
+        <span class="placing">Scholarship, 2024</span>
+        <span class="what">INFORMS RAS Participation Scholarship</span>
+        <span class="where">INFORMS Annual Meeting, Seattle, WA</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="talks">
+    <h2>Talks and service</h2>
+
+    <h4>Conference presentations</h4>
+    <ul class="refs">
+      <li>
+        "Interfor dedicated truck routing optimization using KNN reduction and STAR matheuristic",
+        MOPTA 2026, award session, finalist presentation, 18th AIMMS-MOPTA
+        Optimization Modeling Competition, Lehigh University, Bethlehem, PA.
+      </li>
+      <li>
+        "Single allocation hub line location problems: Model formulations and exact solution
+        methods", 2025 INFORMS Annual Meeting, contributed session, Atlanta, GA.
+      </li>
+      <li>
+        "Train timetabling with rolling stock assignment, short-turning and skip-stop strategy for
+        a bidirectional metro line", Large Scale Optimization Conference 2025,
+        IIT Roorkee, India.
+      </li>
+      <li>
+        "Junction hub location problem", 2024 INFORMS Annual Meeting, flash session,
+        Seattle, WA.
+      </li>
+      <li>
+        "Optimizing train marshalling with shunter in a flat rail yard",
+        2024 INFORMS Annual Meeting, award session, finalist presentation,
+        RAS Problem Solving Competition, Seattle, WA.
+      </li>
+      <li>
+        "Train timetabling with rolling stock assignment and short-turning strategy for a
+        bidirectional metro line", 2023 INFORMS Annual Meeting, award session,
+        finalist presentation, RAS Problem Solving Competition, Phoenix, AZ.
+      </li>
+    </ul>
+
+    <h4>Service</h4>
+    <ul class="refs">
+      <li>
+        Session chair, "Network Performance, Disruption, and Adaptation", contributed session,
+        2025 INFORMS Annual Meeting, Atlanta, GA.
+      </li>
+      <li>
+        Reviewer, Transportation Research Part B: Methodological.
+      </li>
+    </ul>
+  </section>
+
+  <section id="teaching">
+    <h2>Teaching and experience</h2>
+
+    <h4>Teaching assistant, IIT Delhi</h4>
+    <ul class="courses">
+      <li><span>Project Management</span><span class="yr">2025</span></li>
+      <li><span>Quantitative Methods in Management</span><span class="yr">2024</span></li>
+      <li><span>Applied Operations Research</span><span class="yr">2023</span></li>
+      <li><span>Managing Operations</span><span class="yr">2022</span></li>
+    </ul>
+
+    <h4>Teaching assistant, IIM Indore</h4>
+    <ul class="courses">
+      <li><span>Introduction to Algorithms</span><span class="yr">2021</span></li>
+    </ul>
+
+    <h4>Research and Academic Associate, IIM Indore</h4>
+    <p>
+      Operations Management and Quantitative Techniques, September 2020 to December 2021.
+      Advised by
+      <a href="https://iimidr.ac.in/faculty/full-time-faculty/saurabh-chandra/" target="_blank" rel="noopener">Saurabh Chandra</a>.
+      Developed optimization models and algorithms for data-driven decision problems, and ran
+      tutorial sessions for MBA and executive programmes.
+    </p>
+
+    <h4>Workshops and winter schools</h4>
+    <ul class="courses">
+      <li><span>Advanced Workshop on Optimization, IIT Delhi (conducted)</span><span class="yr">2024</span></li>
+      <li><span>Advances in Data-Driven Optimization, IIM Ahmedabad</span><span class="yr">2025</span></li>
+      <li><span>11th Winter School on Network Optimization, Estoril, Portugal</span><span class="yr">2025</span></li>
+      <li><span>Mixed Integer Programming Workshop, IIT Bombay</span><span class="yr">2024</span></li>
+    </ul>
+  </section>
+
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news">
+      <li>
+        <span class="when">August 2026</span>
+        Awarded Third Prize in the 18th AIMMS-MOPTA Optimization Modeling Competition and presented
+        at MOPTA 2026, Lehigh University.
+      </li>
+      <li>
+        <span class="when">October 2025</span>
+        Chaired the "Network Performance, Disruption, and Adaptation" session at the 2025 INFORMS
+        Annual Meeting, Atlanta.
+      </li>
+      <li>
+        <span class="when">October 2025</span>
+        Presented work on single allocation hub line location at the 2025 INFORMS Annual Meeting,
+        Atlanta.
+      </li>
+      <li>
+        <span class="when">April 2025</span>
+        Attended the Advances in Data-Driven Optimization workshop, IIM Ahmedabad.
+      </li>
+      <li>
+        <span class="when">March 2025</span>
+        Gave a talk at the Large Scale Optimization Conference 2025, IIT Roorkee.
+      </li>
+      <li>
+        <span class="when">January 2025</span>
+        Attended the 11th Winter School on Network Optimization, Estoril, Portugal, endorsed by
+        EURO and APDIO.
+      </li>
+      <li>
+        <span class="when">December 2024</span>
+        Conducted an Advanced Workshop on Optimization at the Department of Management Studies,
+        IIT Delhi.
+      </li>
+      <li>
+        <span class="when">November 2024</span>
+        Attended the Mixed Integer Programming 2024 workshop, IIT Bombay.
+      </li>
+      <li>
+        <span class="when">October 2024</span>
+        Presented at the 2024 INFORMS Annual Meeting, Seattle.
+      </li>
+      <li>
+        <span class="when">September 2024</span>
+        Our team was a finalist in the 2024 INFORMS RAS Problem Solving Competition.
+      </li>
+      <li>
+        <span class="when">August 2024</span>
+        Received the INFORMS RAS Participation Scholarship.
+      </li>
+      <li>
+        <span class="when">October 2023</span>
+        Our team took Second Prize in the 2023 INFORMS RAS Problem Solving Competition at the 2023
+        INFORMS Annual Meeting, Phoenix.
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p>
+    <span class="mailto">chsalode@gmail.com</span><br />
+    <span class="mailto">smz218543@dms.iitd.ac.in</span>
+  </p>
+  <p>Department of Management Studies, IIT Delhi, Hauz Khas, New Delhi 110016, India.</p>
+  <p>Last updated September 2026.</p>
+</footer>
+
+<button class="themetoggle" id="themetoggle" type="button" aria-label="Switch between light and dark theme" title="Switch theme">&#9681;</button>
+
+<script>
+// Portrait fallback: if the image is missing (or the page is being viewed
+// somewhere the images/ folder is not served), show the monogram instead of a
+// broken-image icon.
+(function () {
+  var img = document.getElementById('portrait');
+  var mono = document.getElementById('monogram');
+  if (!img || !mono) return;
+  function useMonogram() {
+    img.style.display = 'none';
+    mono.style.display = 'grid';
+  }
+  img.addEventListener('error', useMonogram);
+  if (img.complete && img.naturalWidth === 0) useMonogram();
+})();
+
+// Theme toggle. Reading and writing localStorage is wrapped because it throws
+// in private windows and with site data blocked; the page renders correctly
+// either way, falling back to the visitor's system setting.
+(function () {
+  var btn = document.getElementById('themetoggle');
+  if (!btn) return;
+  var root = document.documentElement;
+
+  function stored() {
+    try { return localStorage.getItem('cks-theme'); } catch (e) { return null; }
+  }
+  function remember(v) {
+    try { localStorage.setItem('cks-theme', v); } catch (e) { /* no-op */ }
+  }
+
+  var saved = stored();
+  if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+
+  btn.addEventListener('click', function () {
+    var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var current = root.getAttribute('data-theme') || (systemDark ? 'dark' : 'light');
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    remember(next);
+  });
+})();
+</script>
+
+</body>
+</html>
